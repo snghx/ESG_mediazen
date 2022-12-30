@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <!-- <link rel="stylesheet" href="/static/css/chat.css"> -->
+    <script src="https://kit.fontawesome.com/f2a95b37d1.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <header class="msger-header">
+        <div class="msger-header-title">Chatbot</div>
+    </header>
+    <div class="wrap">
+        <div class="chat left-chat">
+            <div class="icon"><i class="fa-solid fa-user"></i></div>
+            <div class="textbox">
+                <div class="msg-info">
+                    <div class="msg-info-name">Chatbot</div>
+                </div>
+                안녕하세요. 제주 관광 챗봇입니다! 무엇을 도와드릴까요?</div>
+        </div>
+    </div>
+    <form class="msger-inputarea">
+        <input type="text" class="msger-input" id="textInput" placeholder="메시지를 입력하세요...">
+        <button type="submit" class="msger-send-btn">전송</button>
+    </form>
+</body>
+<script>
+    const msgerForm = get(".msger-inputarea");
+    const msgerInput = get(".msger-input")
+    const wrap = get(".wrap")
+    const BOT_NAME = "ChatBot";
+    const PERSON_NAME = "You";
+
+    msgerForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const msgText = msgerInput.value;
+        if (!msgText) return;
+
+        appendMessage(PERSON_NAME, "right", msgText);
+        msgerInput.value = "";
+        botResponse(msgText);
+    });
+
+
+    function appendMessage(name, side, text) {
+        var msgHTML = `<div class="chat ${side}-chat">
+    <div class="icon"><i class="fa-solid fa-user"></i></div>
+    
+    <div class="textbox">
+        <div class="msg-info">
+            <div class="msg-info-name">${name}</div>
+        </div>
+        ${text}
+    </div>
+</div>
+`;
+        console.log(msgHTML);
+        wrap.insertAdjacentHTML("beforeend", msgHTML);
+        wrap.scrollTop += 500;  
+    }
+
+    function get(selector, root = document) {
+      return root.querySelector(selector);
+    }
+
+    function botResponse(rawText) {
+        $.get("/get", {'a': rawText}).done(function(data) {
+            console.log(rawText);
+            console.log(data);
+            const msgText = data;
+            appendMessage(BOT_NAME, "left", msgText);
+        })
+    };
+
+</script>
+</html
