@@ -1,0 +1,44 @@
+{
+  "_name_or_path": "klue/bert-base",
+  "architectures": [
+    "BertForSequenceClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "\uad00\uad11\uc9c0 \ucd94\ucc9c",
+    "1": "\ub0a0\uc528 \ubb3b\uae30",
+    "2": "\ub9db\uc9d1 \ucd94\ucc9c",
+    "3": "\uc219\uc18c \ucd94\ucc9c",
+    "4": "\uc778\uc0ac",
+    "5": "\uce74\ud398 \ucd94\ucc9c",
+    "6": "\ud65c\ub3d9 \ucd94\ucc9c"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "\uad00\uad11\uc9c0 \ucd94\ucc9c": 0,
+    "\ub0a0\uc528 \ubb3b\uae30": 1,
+    "\ub9db\uc9d1 \ucd94\ucc9c": 2,
+    "\uc219\uc18c \ucd94\ucc9c": 3,
+    "\uc778\uc0ac": 4,
+    "\uce74\ud398 \ucd94\ucc9c": 5,
+    "\ud65c\ub3d9 \ucd94\ucc9c": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "problem_type": "multi_label_classification",
+  "torch_dtype": "float32",
+  "transformers_version": "4.22.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 32000
+}
